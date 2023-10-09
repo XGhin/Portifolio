@@ -2,11 +2,28 @@ import flet as ft
 from flet import colors
 
 def main(Cal: ft.Page):
-    Cal.bgcolor = "#4E3D42"
-    Cal.window_width = 300
-    Cal.window_height = 450
+    Cal.bgcolor = "#000000"
+    Cal.window_width = 273
+    Cal.window_height = 410
     Cal.window_resizable = False
+    Cal.window_always_on_top = True
     
+    #Funcoes
+    def select(e):
+        value_at = resultado.value if resultado.value != '0' else ''
+        value = e.control.content.value
+        
+        if value.isdigit():
+            value = value_at + value
+        elif value == 'AC'():
+            value = '0'
+        else:
+            if value_at and value_at[-1] in ('+', '%', 'x', '-', '=', '±', ','):
+                value_at = value_at[-1]
+            value = value_at + value
+            
+            if():
+                pass
     
 # Buttons
     # Display
@@ -41,7 +58,8 @@ def main(Cal: ft.Page):
         height=50,
         bgcolor=btn['fundo'],
         border_radius=100,
-        alignment=ft.alignment.center
+        alignment=ft.alignment.center,
+        on_click=select,
     )for btn in botoes]
 
 # Linhas
