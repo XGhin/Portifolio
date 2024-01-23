@@ -7,20 +7,22 @@ produtos_cadastrados = []
 
 # defs
 def teste():
-    if novo_produto.get() in produtos_cadastrados:
-        print(f"o produto {novo_produto.get()} já existe")
+    novo_produto_filtrado = novo_produto.get()
+    novo_produto_filtrado = novo_produto_filtrado.title().strip()
+    if novo_produto_filtrado in produtos_cadastrados:
+        print(f"o produto {novo_produto_filtrado} já existe")
     else:
-        produtos_cadastrados.append(novo_produto.get())
-        print(f"o novo produto {novo_produto.get()} foi adicionado")
+        produtos_cadastrados.append(novo_produto_filtrado)
+        print(f"o novo produto {novo_produto_filtrado} foi adicionado")
 
 # window
 window = tk.Tk()
-window.geometry("450x390")
+window.geometry("980x720")
 
 
 # Frames
     # esquerda
-esquerda = ttk.Frame(window, padding=5)
+esquerda = ttk.Frame(window, padding=50)
 esquerda.pack(side="left", fill="both")
 
 linha1_esquerda = ttk.Frame(esquerda, padding=5)
@@ -33,7 +35,7 @@ linha3_esquerda = ttk.Frame(esquerda, padding=5)
 linha3_esquerda.pack(side="top", fill="both")
 
     # esquerda
-direita = ttk.Frame(window, padding=5)
+direita = ttk.Frame(window, padding=50)
 direita.pack(side="right", fill="both")
 
 linha1_direita = ttk.Frame(direita, padding=5)
@@ -62,9 +64,6 @@ entry_nome_do_produto.pack(side="right", padx=5)
     # linha3_esquerda
 button = ttk.Button(linha3_esquerda, text="Cadastrar", command=teste)
 button.pack(padx=5)
-
-
-
 
     # linha1_direita
 label_atualizar_produtos = ttk.Label(linha1_direita, text="Atualizar Produtos", font="Arial 12 bold")
